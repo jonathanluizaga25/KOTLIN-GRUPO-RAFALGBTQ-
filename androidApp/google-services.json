@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1036426330341",
+    "firebase_url": "https://ucbp1-jonathan-default-rtdb.firebaseio.com",
+    "project_id": "ucbp1-jonathan",
+    "storage_bucket": "ucbp1-jonathan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036426330341:android:763835fb87b5425b7f140c",
+        "android_client_info": {
+          "package_name": "org.ucb.appp1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUL2XOri9vvrTF5SnOmYpJSb4gKgn_Uik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

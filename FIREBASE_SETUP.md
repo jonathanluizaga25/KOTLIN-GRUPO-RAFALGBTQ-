@@ -1,8 +1,9 @@
 # Configuración de Firebase
 
 La aplicación Android usa el identificador `org.ucb.appp1`. El archivo
-`androidApp/google-services.json` no está incluido en Git: descárgalo desde
-Firebase Console antes de compilar y colócalo en esa ubicación.
+`androidApp/google-services.json` está incluido y apunta al proyecto compartido
+`ucbp1-jonathan`. Si quieres usar otro Firebase, reemplázalo por la configuración
+de tu propia app registrada con el mismo identificador de paquete.
 
 ## Estado actual
 

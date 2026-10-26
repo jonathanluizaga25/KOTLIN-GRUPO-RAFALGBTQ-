@@ -36,7 +36,7 @@ import org.ucb.appp1.integrator.IntegratorStore
 
 private enum class Route { MAIN_LIST, NOTES, COLLABORATIVE, PROFILE, SETTINGS, FILM, USER_INFO }
 
-private const val DEFAULT_GRPC_SERVER_URL = ""
+private const val DEFAULT_GRPC_SERVER_URL = "https://silly-occultist-blazer.ngrok-free.dev"
 
 @Composable
 fun FirebaseCourseApp(destination: String? = null, onDestinationConsumed: () -> Unit = {}) {

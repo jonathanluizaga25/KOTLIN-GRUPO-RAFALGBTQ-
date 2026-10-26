@@ -21,6 +21,6 @@ emulador o teléfono y pulsa Run. En la aplicación abre **Ajustes > Servidor gR
 Para detener el backend usa el botón rojo **Stop** de Android Studio. El script
 cierra también el proceso de Spring Boot que inició.
 
-Descarga `androidApp/google-services.json` desde Firebase Console: ese archivo no
-se distribuye en Git. Instala ngrok desde su sitio oficial y configura tu token
-en tu cuenta local; el token no se incluye en el proyecto.
+El archivo `androidApp/google-services.json` está incluido para conectar con el
+Firebase del grupo. Instala ngrok desde su sitio oficial y configura tu propio
+token en tu cuenta local; el token no se incluye en el proyecto.

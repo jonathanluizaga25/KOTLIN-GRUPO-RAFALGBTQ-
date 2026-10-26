@@ -2,10 +2,14 @@
 
 Proyecto Kotlin Multiplatform con una aplicación Android y un servidor gRPC.
 
-Antes de compilar la aplicación, descarga `google-services.json` de tu proyecto
-Firebase y colócalo en `androidApp/`. Este archivo no se incluye en el repositorio.
-Para la lista colaborativa se necesita crear Firestore y publicar las reglas
-descritas en [INTEGRADOR_E100.md](./INTEGRADOR_E100.md).
+El archivo `androidApp/google-services.json` ya está incluido y conecta la app
+con el Firebase compartido del grupo (`ucbp1-jonathan`). Para la lista colaborativa
+se necesita crear Firestore y publicar las reglas descritas en
+[INTEGRADOR_E100.md](./INTEGRADOR_E100.md).
+
+Para comenzar: clona o descarga el repositorio, abre esta carpeta en Android
+Studio, espera Gradle Sync y ejecuta `UCBP1 - Android` en un emulador. Para gRPC,
+instala ngrok en tu computadora y sigue [GRPC_EXAM.md](./GRPC_EXAM.md).
 
 La aplicación Android incluye Firebase Authentication, Realtime Database,
 Remote Config, FCM, localización, temas y un cliente gRPC. El servidor gRPC de
