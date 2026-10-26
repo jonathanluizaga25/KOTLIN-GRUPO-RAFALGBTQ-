@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android strings
+ Project: testproject
+ Locale: es-BO, Spanish (Bolivia)
+ Exported by: Roberto Carlos Callisaya Mamani
+ Exported at: Sun, 11 Oct 2026 18:51:58 -0400
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="login_title">Login</string>
+    <string name="app_name">ucbp2</string>
+    <string name="field_empty_text">The field cannot be empty</string>
+    <string name="error_network">Unable to connect to the Internet. Please check your connection.</string>
+    <string name="error_server">A server error occurred. Please try again later.</string>
+    <string name="error_not_found">User not found.</string>
+    <string name="error_empty_response">No response received from the server.</string>
+    <string name="error_unknown">An unexpected error occurred. Please try again.</string>
+    <string name="api_key">fa3e844ce31744388e07fa47c7c5d8c3</string>
+</resources>

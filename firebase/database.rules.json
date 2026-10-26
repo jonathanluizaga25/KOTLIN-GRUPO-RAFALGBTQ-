@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "collaborative_counter": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".validate": "newData.hasChildren(['count', 'revision']) && newData.child('count').isNumber() && newData.child('count').val() >= 0 && newData.child('revision').isNumber() && newData.child('revision').val() >= 0 && (!data.exists() || newData.child('revision').val() >= data.child('revision').val())"
+    },
+    "notes": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "$noteId": {
+          ".validate": "newData.hasChildren(['text']) && newData.child('text').isString() && newData.child('text').val().length <= 500"
+        }
+      }
+    }
+  }
+}

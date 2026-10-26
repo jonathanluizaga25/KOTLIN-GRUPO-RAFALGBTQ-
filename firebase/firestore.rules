@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function summaryBefore() {
+      return get(/databases/$(database)/documents/collaboration/summary);
+    }
+    function summaryAfter() {
+      return getAfter(/databases/$(database)/documents/collaboration/summary);
+    }
+    function hasSummary() {
+      return exists(/databases/$(database)/documents/collaboration/summary);
+    }
+    function itemBefore(id) {
+      return exists(/databases/$(database)/documents/collaborative_items/$(id));
+    }
+    function itemAfter(id) {
+      return existsAfter(/databases/$(database)/documents/collaborative_items/$(id));
+    }
+    match /users/{uid}/devices/{deviceId} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+    match /collaborative_items/{itemId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['text', 'owner', 'createdAt'])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 500
+        && request.resource.data.owner == request.auth.uid
+        && request.resource.data.createdAt is int
+        && summaryAfter().data.operation == 'add'
+        && summaryAfter().data.lastItemId == itemId
+        && ((!hasSummary() && summaryAfter().data.revision == 1)
+          || (hasSummary() && summaryAfter().data.revision == summaryBefore().data.revision + 1));
+      allow update: if false;
+      allow delete: if signedIn() && resource.data.owner == request.auth.uid
+        && summaryAfter().data.operation == 'delete'
+        && summaryAfter().data.lastItemId == itemId
+        && hasSummary() && summaryAfter().data.revision == summaryBefore().data.revision + 1;
+    }
+    match /collaboration/summary {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.resource.data.keys().hasOnly(['count', 'revision', 'operation', 'lastItemId'])
+        && request.resource.data.count == 1 && request.resource.data.revision == 1
+        && request.resource.data.operation == 'add'
+        && request.resource.data.lastItemId is string
+        && !itemBefore(request.resource.data.lastItemId) && itemAfter(request.resource.data.lastItemId);
+      allow update: if signedIn() && request.resource.data.keys().hasOnly(['count', 'revision', 'operation', 'lastItemId'])
+        && request.resource.data.lastItemId is string
+        && request.resource.data.revision == resource.data.revision + 1
+        && ((request.resource.data.operation == 'add' && request.resource.data.count == resource.data.count + 1
+              && !itemBefore(request.resource.data.lastItemId) && itemAfter(request.resource.data.lastItemId))
+          || (request.resource.data.operation == 'delete' && resource.data.count > 0
+              && request.resource.data.count == resource.data.count - 1
+              && itemBefore(request.resource.data.lastItemId) && !itemAfter(request.resource.data.lastItemId)));
+      allow delete: if false;
+    }
+  }
+}

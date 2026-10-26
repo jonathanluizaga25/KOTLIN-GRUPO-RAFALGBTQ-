@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android strings
+ Project: testproject
+ Locale: es-ES, Spanish (Spain)
+ Exported by: Roberto Carlos Callisaya Mamani
+ Exported at: Sun, 11 Oct 2026 18:51:58 -0400
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="login_title">¿Seguro que quieres cerrar la sesión de Barik Mobile?</string>
+    <string name="app_name">ucbp2</string>
+    <string name="field_empty_text"></string>
+    <string name="error_network"></string>
+    <string name="error_server"></string>
+    <string name="error_not_found"></string>
+    <string name="error_empty_response"></string>
+    <string name="error_unknown"></string>
+    <string name="api_key"></string>
+</resources>
